@@ -59,7 +59,7 @@ const schema = shallowRef<SchemaPageNode>({
   name: 'Page',
   code: `
 function setup() {
-	const count = ref(0)
+  const count = ref(0)
 
   function handleClick() {
     count.value++
@@ -77,18 +77,18 @@ function setup() {
       name: 'Button',
       props: {
         onClick: {
-					type: 'Expression',
-					value: 'handleClick'
-				}
+          type: 'Expression',
+          value: 'handleClick'
+        }
       },
       children: [
         {
-					name: 'Text',
-					value: {
-						type: 'Expression',
-						value: 'count.value'
-					}
-				}
+          name: 'Text',
+          value: {
+	          type: 'Expression',
+		          alue: 'count.value'
+          }
+        }
       ]
     }
   ]
@@ -116,7 +116,7 @@ We recommend that `issue` be used for problem feedback, or others:
 
 ### Thanks to contributors
 
-<a href="https://github.com/varletjs/varlet/graphs/contributors">
+<a href="https://github.com/varletjs/varlet-schema/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
 </a>
 
