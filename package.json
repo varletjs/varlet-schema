@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "bootstrap": "pnpm i && pnpm --dir ./packages/varlet-schema-renderer build",
+    "release": "pnpm bootstrap && varlet-cli release"
+  },
+  "devDependencies": {
+    "@varlet/cli": "^2.18.1",
+    "typescript": "^5.1.5"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@varlet/schema-renderer",
+  "version": "0.0.0",
+  "description": "Lightweight Schema renderer based on Vue3",
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+
+  "keywords": ["Vue3", "Schema", "Renderer", "Varlet"],
+  "author": "haoziqaq <357229046@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
+    "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean"
+  },
+  "dependencies": {
+    "@varlet/axle": "^0.2.1",
+    "@varlet/shared": "^2.18.1"
+  },
+  "devDependencies": {
+    "tsup": "7.2.0",
+    "typescript": "^5.1.5"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  }
+}
