@@ -85,8 +85,8 @@ function setup() {
         {
           name: 'Text',
           value: {
-	          type: 'Expression',
-		          alue: 'count.value'
+            type: 'Expression',
+            value: 'count.value'
           }
         }
       ]
