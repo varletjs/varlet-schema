@@ -2,9 +2,7 @@
   "name": "@varlet/schema-eval-with",
   "version": "0.0.0",
   "main": "index.js",
-  "description": "Eval with utils",
   "type": "module",
-  "keywords": ["Vue3", "Schema", "Renderer", "Varlet"],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT"
 }
