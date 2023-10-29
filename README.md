@@ -117,7 +117,7 @@ We recommend that `issue` be used for problem feedback, or others:
 ### Thanks to contributors
 
 <a href="https://github.com/varletjs/varlet-schema/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
+  <img src="https://contrib.rocks/image?repo=varletjs/varlet-schema" />
 </a>
 
 ### Thanks to the following sponsors
