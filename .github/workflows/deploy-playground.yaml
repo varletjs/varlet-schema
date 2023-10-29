@@ -1,0 +1,33 @@
+name: Deploy Playground
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-playground:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        run: corepack enable
+
+      - name: Set node version to 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build playground
+        run: pnpm build:play
+
+      - name: Deploy site
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: playground-gh-page
+          folder: packages/varlet-schema-playground/dist

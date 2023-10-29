@@ -19,6 +19,9 @@ importers:
 
   packages/varlet-schema-playground:
     dependencies:
+      '@varlet/schema-renderer':
+        specifier: workspace:*
+        version: link:../varlet-schema-renderer
       '@varlet/touch-emulator':
         specifier: ^2.18.1
         version: 2.18.1

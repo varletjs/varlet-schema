@@ -54,7 +54,7 @@ const SCOPE_VARIABLES = ['$item', '$index', '$slotProps', '$renderArgs']
 
 const axle = createAxle({})
 
-export const Renderer = defineComponent({
+export const SchemaRenderer = defineComponent({
   props: {
     schema: {
       type: Object as PropType<SchemaPageNode>,
@@ -65,11 +65,16 @@ export const Renderer = defineComponent({
     components: {
       type: Object as PropType<Record<string, Component>>,
       default: () => ({})
+    },
+
+    injects: {
+      type: Object as PropType<Record<string, any>>,
+      default: () => ({})
     }
   },
 
   setup(props) {
-    const ctx = {
+    const internals = {
       h,
       ref,
       reactive,
@@ -95,6 +100,11 @@ export const Renderer = defineComponent({
       axle
     }
 
+    let ctx = {
+      ...internals,
+      ...props.injects
+    }
+
     const { uid } = getCurrentInstance()!
     const code = props.schema.compatibleCode ?? props.schema.code ?? 'function setup() { return {} }'
     const setup = exec(code)
@@ -104,6 +114,9 @@ export const Renderer = defineComponent({
     onMounted(mountCss)
     onUnmounted(unmountCss)
     watch(() => props.schema.css, updateCss)
+    watch(() => props.injects, () => {
+      ctx = { ...internals, ...props.injects }
+    })
 
     function exec(expression: string, context?: any) {
       // @ts-ignore

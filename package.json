@@ -2,7 +2,11 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "bootstrap": "pnpm i && pnpm --dir ./packages/varlet-schema-renderer build",
+    "dev": "pnpm --dir ./packages/varlet-schema-renderer dev",
+    "build":  "pnpm --dir ./packages/varlet-schema-renderer build",
+    "dev:play": "pnpm pnpm --dir ./packages/varlet-schema-playground dev",
+    "build:play": "pnpm pnpm --dir ./packages/varlet-schema-playground build",
+    "bootstrap": "pnpm i && pnpm build",
     "release": "pnpm bootstrap && varlet-cli release"
   },
   "devDependencies": {
