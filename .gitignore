@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 .vscode/
 
-varlet-schema-renderer/lib
+packages/varlet-schema-renderer/lib
