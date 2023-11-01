@@ -9,6 +9,7 @@
     "dev:play": "pnpm pnpm --dir ./packages/varlet-schema-playground dev",
     "build:play": "pnpm pnpm --dir ./packages/varlet-schema-playground build",
     "bootstrap": "pnpm i && pnpm build && pnpm build:repl",
+    "bootstrap:ci": "pnpm i --no-frozen-lockfile && pnpm build && pnpm build:repl",
     "release": "pnpm bootstrap && varlet-cli release"
   },
   "devDependencies": {

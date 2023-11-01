@@ -21,7 +21,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile && pnpm build
+        run: pnpm bootstrap:ci
 
       - name: Build playground
         run: pnpm build:play

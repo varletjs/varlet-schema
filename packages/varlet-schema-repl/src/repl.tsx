@@ -82,13 +82,11 @@ export const SchemaRepl = defineComponent({
     }
 
     return () => {
-      return h(
-        'div',
-        { class: ['var-schema-repl', props.theme === 'vs-dark' ? 'var-schema-repl-vs-dark' : undefined] },
-        [
-          h('div', { class: 'var-schema-repl-editor', ref: editorContainer }),
-          h(SchemaRenderer, { schema: props.schema, components: props.components, injects: props.injects })
-        ]
+      return (
+        <div class={['var-schema-repl', props.theme === 'vs-dark' ? 'var-schema-repl-vs-dark' : undefined]}>
+          <div class="var-schema-repl-editor" ref={editorContainer}></div>
+          <SchemaRenderer schema={props.schema} components={props.components} injects={props.injects} />
+        </div>
       )
     }
   }
