@@ -1,0 +1,22 @@
+:root {
+	--schema-repl-border-color: #eee;
+}
+
+.var-schema-repl {
+	display: flex;
+	height: 100%;
+}
+
+.var-schema-repl-editor {
+	width: 50%;
+	resize: horizontal;
+	border-right: thin solid var(--schema-repl-border-color)
+}
+
+.var-schema-renderer {
+	width: 50%;
+}
+
+.var-schema-repl-vs-dark {
+	--schema-repl-border-color: rgba(255, 255, 255, 0.14);
+}

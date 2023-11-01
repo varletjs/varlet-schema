@@ -4,9 +4,11 @@
   "scripts": {
     "dev": "pnpm --dir ./packages/varlet-schema-renderer dev",
     "build": "pnpm --dir ./packages/varlet-schema-renderer build",
+    "dev:repl": "pnpm --dir ./packages/varlet-schema-repl dev",
+    "build:repl": "pnpm --dir ./packages/varlet-schema-repl build",
     "dev:play": "pnpm pnpm --dir ./packages/varlet-schema-playground dev",
     "build:play": "pnpm pnpm --dir ./packages/varlet-schema-playground build",
-    "bootstrap": "pnpm i && pnpm build",
+    "bootstrap": "pnpm i && pnpm build && pnpm build:repl",
     "release": "pnpm bootstrap && varlet-cli release"
   },
   "devDependencies": {

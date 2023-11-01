@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@varlet/schema-renderer": "workspace:*",
+    "@varlet/schema-repl": "workspace:*",
     "@varlet/touch-emulator": "^2.18.1",
     "@varlet/ui": "^2.18.1",
     "vue": "^3.3.4"

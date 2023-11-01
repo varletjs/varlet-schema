@@ -1,0 +1,35 @@
+{
+  "name": "@varlet/schema-repl",
+  "version": "0.0.2",
+  "description": "Lightweight Schema repl component based on Vue3",
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "keywords": [
+    "Vue3",
+    "Component",
+    "Schema",
+    "Repl",
+    "Varlet"
+  ],
+  "author": "haoziqaq <357229046@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
+    "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean"
+  },
+  "dependencies": {
+    "@varlet/shared": "^2.18.1",
+    "@varlet/use": "^2.18.1",
+    "@varlet/schema-renderer": "workspace:*",
+    "monaco-editor": "0.44.0"
+  },
+  "devDependencies": {
+    "tsup": "7.2.0",
+    "typescript": "^5.1.5",
+    "esbuild-plugin-less": "^1.3.1"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  }
+}

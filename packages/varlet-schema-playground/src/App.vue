@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Button, Form, Input, Select, Option, Space, Snackbar } from '@varlet/ui'
-import { SchemaRenderer, type SchemaPageNode } from '@varlet/schema-renderer'
+import { SchemaRepl, type SchemaPageNode } from '@varlet/schema-repl'
 import { shallowRef } from 'vue'
+import '@varlet/schema-repl/lib/index.css'
 
 const components = shallowRef({
   Button,
@@ -155,7 +156,7 @@ function setup() {
 
 <template>
   <div class="container">
-    <schema-renderer class="schema-renderer" :components="components" :injects="injects" :schema="schema" />
+    <schema-repl theme="vs-dark" :components="components" :injects="injects" v-model:schema="schema" />
   </div>
 </template>
 
@@ -170,20 +171,12 @@ body {
   transition: background-color 0.25s, color 0.25s;
   color: var(--color-text);
   background-color: var(--color-body);
+  min-height: 100vh;
 }
 </style>
 
 <style scoped lang="less">
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  min-height: 100vh;
-}
-
-.schema-renderer {
-  width: 400px;
-  max-width: 100%;
+  height: 100vh;
 }
 </style>

@@ -335,6 +335,6 @@ export const SchemaRenderer = defineComponent({
       }
     }
 
-    return () => h('div', { class: 'varlet-schema-renderer' }, renderSchemaNodeSlots(props.schema, {}))
+    return () => h('div', { class: 'var-schema-renderer' }, renderSchemaNodeSlots(props.schema, {}))
   }
 })
