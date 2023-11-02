@@ -13,7 +13,7 @@
     "release": "pnpm bootstrap && varlet-cli release"
   },
   "devDependencies": {
-    "@varlet/cli": "^2.18.1",
+    "@varlet/cli": "^2.18.2",
     "typescript": "^5.1.5"
   }
 }
