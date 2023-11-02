@@ -1,15 +1,54 @@
 :root {
 	--schema-repl-border-color: #eee;
+	--schema-repl-tab-active-color: #3a7afe;
+	--schema-repl-background-color: #fff;
+	--schema-repl-text-color: #333;
+	--schema-repl-tab-container-height: 44px;
+	--schema-repl-tab-font-size: 15px;
+	--schema-repl-tab-indicator-size: 2px;
 }
 
 .var-schema-repl {
 	display: flex;
+	flex-direction: column;
 	height: 100%;
+	background-color: var(--schema-repl-background-color);
+	color: var(--schema-repl-text-color);
+}
+
+.var-schema-repl-tab-container {
+	display: flex;
+	flex-shrink: 0;
+	height: var(--schema-repl-tab-container-height);
+	border-bottom: thin solid var(--schema-repl-border-color);
+}
+
+.var-schema-repl-tab {
+	display: flex;
+	align-items: center;
+	padding: 0 20px;
+	height: 100%;
+	color: var(--schema-repl-text-color);
+	cursor: pointer;
+	font-size: var(--schema-repl-tab-font-size);
+	border-bottom: var(--schema-repl-tab-indicator-size) solid transparent;
+}
+
+.var-schema-repl-tab-active {
+	font-weight: bold;
+	color: var(--schema-repl-tab-active-color);
+	border-bottom: var(--schema-repl-tab-indicator-size) solid var(--schema-repl-tab-active-color);
+}
+
+.var-schema-repl-editor-container {
+	display: flex;
+	flex: 1;
 }
 
 .var-schema-repl-editor {
 	width: 50%;
-	resize: horizontal;
+	height: 100%;
+	overflow: auto;
 	border-right: thin solid var(--schema-repl-border-color)
 }
 
@@ -19,4 +58,7 @@
 
 .var-schema-repl-vs-dark {
 	--schema-repl-border-color: rgba(255, 255, 255, 0.14);
+	--schema-repl-tab-active-color: #4a7afe;
+	--schema-repl-background-color: #212121;
+	--schema-repl-text-color: #fff;
 }

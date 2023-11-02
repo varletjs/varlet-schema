@@ -49,29 +49,34 @@ import {
   type SchemaNodeProps
 } from './types'
 
+export type SchemaRendererComponents = Record<string, Component>
+
+export type SchemaRendererInjects = Record<string, any>
+
 const STYLE_ID_PREFIX = 'schema-renderer-style'
 const SCOPE_VARIABLES = ['$item', '$index', '$slotProps', '$renderArgs']
-
 const axle = createAxle({})
 
-export const SchemaRenderer = defineComponent({
-  props: {
-    schema: {
-      type: Object as PropType<SchemaPageNode>,
-      required: true,
-      default: () => ({})
-    },
-
-    components: {
-      type: Object as PropType<Record<string, Component>>,
-      default: () => ({})
-    },
-
-    injects: {
-      type: Object as PropType<Record<string, any>>,
-      default: () => ({})
-    }
+const props = {
+  schema: {
+    type: Object as PropType<SchemaPageNode>,
+    required: true,
+    default: () => ({})
   },
+
+  components: {
+    type: Object as PropType<SchemaRendererComponents>,
+    default: () => ({})
+  },
+
+  injects: {
+    type: Object as PropType<SchemaRendererInjects>,
+    default: () => ({})
+  }
+}
+
+const Renderer = defineComponent({
+  props,
 
   setup(props) {
     const internals = {
@@ -106,17 +111,24 @@ export const SchemaRenderer = defineComponent({
     }
 
     const { uid } = getCurrentInstance()!
-    const code = props.schema.compatibleCode ?? props.schema.code ?? 'function setup() { return {} }'
-    const setup = exec(code)
-    const setupCtx = setup()
-    Object.assign(ctx, setupCtx)
+    runSetup()
 
     onMounted(mountCss)
     onUnmounted(unmountCss)
     watch(() => props.schema.css, updateCss)
-    watch(() => props.injects, () => {
-      ctx = { ...internals, ...props.injects }
-    })
+    watch(
+      () => props.injects,
+      () => {
+        ctx = { ...internals, ...props.injects }
+      }
+    )
+
+    function runSetup() {
+      const code = props.schema.compatibleCode ?? props.schema.code ?? 'function setup() { return {} }'
+      const setup = exec(code)
+      const setupCtx = setup()
+      Object.assign(ctx, setupCtx)
+    }
 
     function exec(expression: string, context?: any) {
       // @ts-ignore
@@ -336,5 +348,26 @@ export const SchemaRenderer = defineComponent({
     }
 
     return () => h('div', { class: 'var-schema-renderer' }, renderSchemaNodeSlots(props.schema, {}))
+  }
+})
+
+export const SchemaRenderer = defineComponent({
+  props,
+
+  setup(props) {
+    let oldCode = ''
+    let rendererKey = ref(0)
+
+    watch(() => props.schema, (value) => {
+      if (value.code !== oldCode) {
+        rendererKey.value++
+      }
+
+      oldCode = value.code ?? ''
+    }, { immediate: true})
+
+    return () => {
+      return h(Renderer, { ...props, key: rendererKey.value })
+    }
   }
 })

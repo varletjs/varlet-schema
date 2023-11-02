@@ -1,25 +1,14 @@
 <script setup lang="ts">
-import { Button, Form, Input, Select, Option, Space, Snackbar } from '@varlet/ui'
 import { SchemaRepl, type SchemaPageNode } from '@varlet/schema-repl'
 import { shallowRef } from 'vue'
 import '@varlet/schema-repl/lib/index.css'
+import { useVarlet } from './useVarlet';
 
-const components = shallowRef({
-  Button,
-  Form,
-  Input,
-  Select,
-  Option,
-  Space
-})
-
-const injects = shallowRef({
-  Snackbar
-})
+const { components, injects } = useVarlet()
 
 const schema = shallowRef<SchemaPageNode>({
   name: 'Page',
-  code: `
+  code: `\
 function setup() {
   const model = ref({})
 
@@ -43,7 +32,12 @@ function setup() {
   })
 
   return { model, handleSave, handleReset }
-}
+}\
+`,
+  css: `\
+.var-schema-renderer {
+  padding: 16px;
+}\
 `,
   children: [
     {
@@ -166,11 +160,14 @@ function setup() {
   -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+  color-scheme: dark;
+
+}
+
 body {
   margin: 0;
   transition: background-color 0.25s, color 0.25s;
-  color: var(--color-text);
-  background-color: var(--color-body);
   min-height: 100vh;
 }
 </style>
