@@ -57,20 +57,20 @@ const injects = shallowRef({
 
 const schema = shallowRef<SchemaPageNode>({
   name: 'Page',
-  code: `
+  code: `\
 function setup() {
   const count = ref(0)
-
-  function handleClick() {
-    count.value++
-  }
 
   onMounted(() => {
     Snackbar('hello')
   })
 
+   function handleClick() {
+    count.value++
+  }
+
   return { count, handleClick }
-}
+}\
 `,
   children: [
     {
