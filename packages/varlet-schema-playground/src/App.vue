@@ -1,16 +1,24 @@
 <script setup lang="ts">
-import { SchemaRepl, type SchemaPageNode } from '@varlet/schema-repl'
-import { shallowRef } from 'vue'
+import { SchemaRepl, type SchemaPageNode, SchemaReplTab } from '@varlet/schema-repl'
+import { shallowRef, ref, watch } from 'vue'
+import { useVarlet } from './useVarlet'
 import '@varlet/schema-repl/lib/index.css'
-import { useVarlet } from './useVarlet';
 
 const { components, injects } = useVarlet()
 
-const schema = shallowRef<SchemaPageNode>({
+const defaultSchema = {
   name: 'Page',
   code: `\
 function setup() {
   const model = ref({})
+
+  onMounted(() => {
+    const modelString = localStorage.getItem('cache')
+
+    if (modelString) {
+      model.value = JSON.parse(modelString)
+    }
+  })
 
   function handleSave() {
     const modelString = JSON.stringify(model.value)
@@ -20,16 +28,8 @@ function setup() {
 
   function handleReset() {
     Snackbar('Reset and clear localStorage success!')
-    localStorage.clear()
+    localStorage.removeItem('cache')
   }
-
-  onMounted(() => {
-    const modelString = localStorage.getItem('cache')
-
-    if (modelString) {
-      model.value = JSON.parse(modelString)
-    }
-  })
 
   return { model, handleSave, handleReset }
 }\
@@ -145,12 +145,37 @@ function setup() {
       ]
     }
   ]
-})
+}
+
+const schema = shallowRef<SchemaPageNode>(
+  localStorage.getItem('schema') ? JSON.parse(localStorage.getItem('schema')!) : defaultSchema
+)
+
+const activeTab = ref((localStorage.getItem('active-tab') ?? 'JSON') as SchemaReplTab)
+
+watch(
+  () => activeTab.value,
+  (newValue) => {
+    localStorage.setItem('active-tab', newValue)
+  },
+  { immediate: true }
+)
+
+function handleChange(newSchema: SchemaPageNode) {
+  localStorage.setItem('schema', JSON.stringify(newSchema))
+}
 </script>
 
 <template>
   <div class="container">
-    <schema-repl theme="vs-dark" :components="components" :injects="injects" v-model:schema="schema" />
+    <schema-repl
+      theme="vs-dark"
+      :components="components"
+      :injects="injects"
+      v-model:active-tab="activeTab"
+      v-model:schema="schema"
+      @change="handleChange"
+    />
   </div>
 </template>
 
@@ -162,7 +187,6 @@ function setup() {
 
 :root {
   color-scheme: dark;
-
 }
 
 body {

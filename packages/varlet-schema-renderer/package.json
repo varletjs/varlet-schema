@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@varlet/axle": "^0.2.1",
-    "@varlet/shared": "^2.18.1"
+    "@varlet/shared": "^2.18.2"
   },
   "devDependencies": {
     "tsup": "7.2.0",

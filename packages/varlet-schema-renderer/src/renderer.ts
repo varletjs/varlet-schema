@@ -101,7 +101,6 @@ const Renderer = defineComponent({
       onUpdated,
       onBeforeUnmount,
       onUnmounted,
-      exec,
       axle
     }
 

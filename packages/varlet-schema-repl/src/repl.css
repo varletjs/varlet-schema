@@ -1,5 +1,5 @@
 :root {
-	--schema-repl-border-color: #eee;
+	--schema-repl-border-color: #ddd;
 	--schema-repl-tab-active-color: #3a7afe;
 	--schema-repl-background-color: #fff;
 	--schema-repl-text-color: #333;
@@ -54,6 +54,21 @@
 
 .var-schema-renderer {
 	width: 50%;
+}
+
+.var-schema-repl-transfer {
+	position: fixed;
+	left: 50%;
+	bottom: 20px;
+	padding: 14px;
+	transform: translateX(-50%);
+	border: thin solid var(--schema-repl-border-color);
+	border-radius: 4px;
+	outline: none;
+	cursor: pointer;
+	background-color: var(--schema-repl-background-color);
+	transition: all .2s;
+	color: var(--schema-repl-text-color);
 }
 
 .var-schema-repl-vs-dark {

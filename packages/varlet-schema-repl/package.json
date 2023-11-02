@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@varlet/schema-renderer": "workspace:*",
-    "@varlet/shared": "^2.18.1",
-    "@varlet/use": "^2.18.1",
+    "@varlet/shared": "^2.18.2",
+    "@varlet/use": "^2.18.2",
     "monaco-editor": "0.44.0"
   },
   "devDependencies": {

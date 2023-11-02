@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@varlet/schema-repl": "workspace:*",
-    "@varlet/touch-emulator": "^2.18.1",
-    "@varlet/ui": "^2.18.1",
+    "@varlet/touch-emulator": "^2.18.2",
+    "@varlet/ui": "^2.18.2",
     "vue": "^3.3.4"
   },
   "devDependencies": {
