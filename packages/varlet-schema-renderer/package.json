@@ -1,6 +1,6 @@
 {
   "name": "@varlet/schema-renderer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Lightweight Schema renderer based on Vue3",
   "type": "module",
   "main": "lib/index.js",
