@@ -131,12 +131,12 @@ export const SchemaRepl = defineComponent({
     }
 
     function refreshEditor() {
-      const options = getOptions()
+      schema.value = props.schema
 
+      const options = getOptions()
       editor.updateOptions(options)
       editor.setValue(options.value!)
       monaco.editor.setModelLanguage(editor.getModel()!, options.language!)
-      schema.value = props.schema
     }
 
     function getOptions(): monaco.editor.IStandaloneEditorConstructionOptions {
@@ -153,7 +153,7 @@ export const SchemaRepl = defineComponent({
       if (activeTab.value === 'JSON') {
         return {
           ...defaultOptions,
-          value: JSON.stringify(props.schema, null, 2),
+          value: JSON.stringify(schema.value, null, 2),
           language: 'json'
         }
       }
@@ -161,14 +161,14 @@ export const SchemaRepl = defineComponent({
       if (activeTab.value === 'SCRIPT') {
         return {
           ...defaultOptions,
-          value: props.schema.code ?? 'function setup() {}',
+          value: schema.value.code ?? 'function setup() {}',
           language: 'javascript'
         }
       }
 
       return {
         ...defaultOptions,
-        value: props.schema.css ?? '',
+        value: schema.value.css ?? '',
         language: 'css'
       }
     }
@@ -212,7 +212,10 @@ export const SchemaRepl = defineComponent({
 
     function handleTabClick(tab: SchemaReplTab) {
       activeTab.value = tab
-      refreshEditor()
+
+      const options = getOptions()
+      editor.setValue(options.value!)
+      monaco.editor.setModelLanguage(editor.getModel()!, options.language!)
     }
 
     function handleTransferClick() {
