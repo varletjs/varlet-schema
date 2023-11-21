@@ -10,10 +10,10 @@
     "build:play": "pnpm pnpm --dir ./packages/varlet-schema-playground build",
     "bootstrap": "pnpm i && pnpm build && pnpm build:repl",
     "bootstrap:ci": "pnpm i --no-frozen-lockfile && pnpm build && pnpm build:repl",
-    "release": "pnpm bootstrap && varlet-cli release"
+    "release": "pnpm bootstrap && vr release"
   },
   "devDependencies": {
-    "@varlet/cli": "^2.18.2",
+    "@varlet/release": "0.0.3",
     "typescript": "^5.1.5"
   }
 }
