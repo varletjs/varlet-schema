@@ -11,5 +11,6 @@
     "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
+    "outDir": "./lib"
   }
 }
