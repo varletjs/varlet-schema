@@ -8,9 +8,10 @@
     "downlevelIteration": true,
     "resolveJsonModule": true,
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "outDir": "./lib"
-  }
+  },
 }
