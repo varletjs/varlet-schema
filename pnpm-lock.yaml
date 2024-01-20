@@ -37,7 +37,7 @@ importers:
         version: 20.8.9
       '@vitejs/plugin-vue':
         specifier: ^4.2.3
-        version: 4.2.3(vite@4.5.0)(vue@3.3.4)
+        version: 4.2.3(vite@4.5.2)(vue@3.3.4)
       less:
         specifier: ^4.1.3
         version: 4.2.0
@@ -45,8 +45,8 @@ importers:
         specifier: 5.0.2
         version: 5.0.2
       vite:
-        specifier: ^4.3.9
-        version: 4.5.0(@types/node@20.8.9)(less@4.2.0)
+        specifier: ^4.5.2
+        version: 4.5.2(@types/node@20.8.9)(less@4.2.0)
 
   packages/varlet-schema-renderer:
     dependencies:
@@ -699,14 +699,14 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vitejs/plugin-vue@4.2.3(vite@4.5.0)(vue@3.3.4):
+  /@vitejs/plugin-vue@4.2.3(vite@4.5.2)(vue@3.3.4):
     resolution: {integrity: sha512-R6JDUfiZbJA9cMiguQ7jxALsgiprjBeHL5ikpXfJCH62pPHtI+JdJ5xWj6Ev73yXSlYl86+blXn1kZHQ7uElxw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.5.0(@types/node@20.8.9)(less@4.2.0)
+      vite: 4.5.2(@types/node@20.8.9)(less@4.2.0)
       vue: 3.3.4
     dev: true
 
@@ -2915,8 +2915,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite@4.5.0(@types/node@20.8.9)(less@4.2.0):
-    resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
+  /vite@4.5.2(@types/node@20.8.9)(less@4.2.0):
+    resolution: {integrity: sha512-tBCZBNSBbHQkaGyhGCDUGqeo2ph8Fstyp6FMSvTtsXeZSPpSMGlviAOav2hxVTqFcx8Hj/twtWKsMJXNY0xI8w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
